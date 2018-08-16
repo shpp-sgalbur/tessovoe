@@ -16,6 +16,26 @@ include "server_connect.php";
 $query = "SELECT * FROM users;";
 $result =  mysql_query($query);
 $num_rows = mysql_num_rows($result);
-echo "Количество зарегистрированных пользователей : $num_rows \n";
+
+$title = <<<TITLE
+    <div class = "title">
+        <div>Пользователи</div><div>Количество зарегистрированных пользователей : $num_rows </div>
+    </div>
+
+TITLE;
+$nav = <<<NAV
+    <div>
+        <form method="post">
+             <button formaction='newuser.php'>Создать</button>
+              <input type="text" name="id" placeholder="id">
+              <input type="text" name="email" placeholder="email">
+             <button formaction='find.php'>Найти</button>
+            
+        </form>
+   </div>
+NAV;
+
+echo $title;
+echo $nav;
 ?>
 
